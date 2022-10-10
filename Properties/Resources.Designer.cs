@@ -59,5 +59,180 @@ namespace SFPCalculator.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ID,Name,Factory,Input,Output
+        ///1,Pure Aluminum Ingot,5,22|60,15|30
+        ///2,Copper Alloy Ingot,6,2|50;1|25,12|100
+        ///3,Iron Alloy Ingot,6,1|20;2|20,11|50
+        ///4,Coke Steel Ingot,6,1|75;21|75,14|100
+        ///5,Solid Steel Ingot,6,11|40;5|40,14|60
+        ///6,Compacted Steel Ingot,6,1|22.5;30|11.25,14|37.5
+        ///7,Biomass (Leaves),7,26|120,28|60
+        ///8,Biomass (Wood),7,27|60,28|300
+        ///9,Biomass (Mycelia),7,24|150,28|150
+        ///10,Biomass (Alien Carapace),7,104|15,28|100
+        ///11,Biomass (Alien Organs),7,105|7.5,28|200
+        ///12,Steel Canister,7,14|60,103|40
+        ///13,Stee [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string AltRecipesDB {
+            get {
+                return ResourceManager.GetString("AltRecipesDB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ID,Name,Category,PowerUsed
+        ///0,Import,Other,0
+        ///1,Miner,Extraction,5
+        ///2,Oil Extractor,Extraction,40
+        ///3,Water Extractor,Extraction,20
+        ///4,Resource Well,Extraction,150
+        ///5,Smelter,Production,4
+        ///6,Foundry,Production,16
+        ///7,Constructor,Production,4
+        ///8,Assembler,Production,15
+        ///9,Manufacturer,Production,55
+        ///10,Particle Accelerator,Production,1500
+        ///11,Refinery,Production,30
+        ///12,Blender,Production,75
+        ///13,Packager,Production,10
+        ///14,Biomass Burner,Generators,30
+        ///15,Coal Generator,Generators,75
+        ///16,Fuel Generator,Generator [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string BuildingsDB {
+            get {
+                return ResourceManager.GetString("BuildingsDB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SFPCalculator.Data.AltRecipesDB.csv.
+        /// </summary>
+        internal static string DBAltRecipes {
+            get {
+                return ResourceManager.GetString("DBAltRecipes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SFPCalculator.Data.BuildingsDB.csv.
+        /// </summary>
+        internal static string DBBuildings {
+            get {
+                return ResourceManager.GetString("DBBuildings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SFPCalculator.Data.ItemsDB.csv.
+        /// </summary>
+        internal static string DBItems {
+            get {
+                return ResourceManager.GetString("DBItems", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SFPCalculator.Data.PowerGenDB.csv.
+        /// </summary>
+        internal static string DBPowerGen {
+            get {
+                return ResourceManager.GetString("DBPowerGen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SFPCalculator.Data.RecipesDB.csv.
+        /// </summary>
+        internal static string DBRecipes {
+            get {
+                return ResourceManager.GetString("DBRecipes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ID,Name,Category
+        ///0,Power MW,Other
+        ///1,Iron Ore,Ores
+        ///2,Copper Ore,Ores
+        ///3,Caterium Ore,Ores
+        ///4,Limestone,Ores
+        ///5,Coal,Ores
+        ///6,Raw Quartz,Ores
+        ///7,Sulfur,Ores
+        ///8,Bauxite,Ores
+        ///9,Uranium,Ores
+        ///10,S.A.M. Ore,Ores
+        ///11,Iron Ingot,Ingots
+        ///12,Copper Ingot,Ingots
+        ///13,Caterium Ingot,Ingots
+        ///14,Steel Ingot,Ingots
+        ///15,Aluminum Ingot,Ingots
+        ///16,Concrete,Material
+        ///17,Quartz Crystal,Material
+        ///18,Silica,Material
+        ///19,Copper Powder,Material
+        ///20,Polymer Resin,Material
+        ///21,Petroleum Coke,Material
+        ///22,Aluminum Scrap,Material
+        ///2 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string ItemsDB {
+            get {
+                return ResourceManager.GetString("ItemsDB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ID,Name,Factory,Input,Output
+        ///1,Coal,15,5|15,
+        ///2,Compacted Coal,15,30|7.143,
+        ///3,Petroleum Coke,15,21|25,
+        ///4,Turbofuel,16,39|4.5,
+        ///5,Fuel,16,37|12,
+        ///6,Liquid Biofuel,16,38|12,
+        ///7,Uranium,18,78|0.2,83|10
+        ///8,Plutonium,18,79|0.1,84|1
+        ///.
+        /// </summary>
+        internal static string PowerGenDB {
+            get {
+                return ResourceManager.GetString("PowerGenDB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ID,Name,Factory,Input,Output
+        ///1,Uranium Waste,0,,83|1
+        ///2,Mycelia,0,,24|1
+        ///3,Biomass,0,,28|1
+        ///4,Iron Ore,1,,1|30
+        ///5,Copper Ore,1,,2|30
+        ///6,Caterium Ore,1,,3|30
+        ///7,Limestone,1,,4|30
+        ///8,Coal,1,,5|30
+        ///9,Raw Quartz,1,,6|30
+        ///10,Sulfur,1,,7|30
+        ///11,Bauxite,1,,8|30
+        ///12,Uranium,1,,9|30
+        ///13,Crude Oil,2,,35|60
+        ///14,Water,3,,34|120
+        ///15,Water,4,,34|30
+        ///16,Nitrogen Gas,4,,43|30
+        ///17,Crude Oil,4,,35|30
+        ///18,Iron Ingot,5,1|30,11|30
+        ///19,Copper Ingot,5,2|30,12|30
+        ///20,Caterium Ingot,5,3|30,13|30
+        ///21,Steel Ingot,6,1|45;5|45,14|45
+        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string RecipesDB {
+            get {
+                return ResourceManager.GetString("RecipesDB", resourceCulture);
+            }
+        }
     }
 }

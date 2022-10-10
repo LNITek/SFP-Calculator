@@ -15,6 +15,14 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>Staticfactory;Production;Calcularor;Planner</PackageTags>
     <IncludeSymbols>False</IncludeSymbols>
+    <ApplicationIcon>SFPPlanner.ico</ApplicationIcon>
+    <PackageProjectUrl>https://github.com/Tekknow1580/SFP-Calculator</PackageProjectUrl>
+    <PackageIcon>SFPPlanner.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/Tekknow1580/SFP-Calculator</RepositoryUrl>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <PackageReleaseNotes>Check The ChangeLog</PackageReleaseNotes>
+    <PackageId>SFPCalculator</PackageId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,6 +31,11 @@
     <None Remove="Data\ItemsDB.csv" />
     <None Remove="Data\PowerGenDB.csv" />
     <None Remove="Data\RecipesDB.csv" />
+    <None Remove="SFPPlanner.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="SFPPlanner.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -50,6 +63,21 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Update="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Update="SFPPlanner.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

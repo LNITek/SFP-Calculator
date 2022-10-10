@@ -1,6 +1,6 @@
 ﻿# SFP Calculator
 
-[![NuGet](https://img.shields.io/nuget/v/ExtraFunctions.svg)](https://www.nuget.org/packages/SFPCalculator/)
+[![NuGet](https://img.shields.io/nuget/v/SFPCalculator.svg)](https://www.nuget.org/packages/SFPCalculator/)
 
 [Satisfactory](https://www.satisfactorygame.com/)
 Production Calculator Is A Library That Does All Of The Hard Work To Calculate A Entire Production Line.

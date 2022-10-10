@@ -88,8 +88,8 @@ ID,Name,Category
 86,Color Cartridge,Consumed
 87,Gas Filter,Consumed
 88,Iodine Infused Filter,Consumed
-89,Spiked Rebar,Consumed
-90,Rifle Cartridege,Consumed
+89,Iron Rebar,Consumed
+90,Rifle Ammo,Consumed
 91,Nobelisk,Consumed
 92,Smart Plating,Special
 93,Versatile Framework,Special
@@ -103,8 +103,23 @@ ID,Name,Category
 101,Nuclear Pasta,Special
 102,Empty Fluid Tank,Other
 103,Empty Canister,Other
-104,Alien Carapace,Material
-105,Alien Organs,Material
+104,Alien Protein,Material
+105,Hog Remains,Material
 106,Packaged Nitrogen Gas,Container
 107,Packaged Fuel,Container
 108,Packaged Water,Container
+109,Plasma Spitter Remains,Material
+110,Stinger Remains,Material
+111,Hatcher Remains,Material
+112,Organic Data Capsule,Special
+113,Smokeless Powder,Consumed
+114,Homing Rifle Ammo,Consumed
+115,Turbo Rifle Ammo,Consumed
+116,Packaged Turbofuel,Container
+117,Stun Rebar,Consumed
+118,Shatter Rebar,Consumed
+119,Explosive Rebar,Consumed
+120,Gas Nobelisk,Consumed
+121,Pulse Nobelisk,Consumed
+122,Cluster Nobelisk,Consumed
+123,Nuke Nobelisk,Consumed

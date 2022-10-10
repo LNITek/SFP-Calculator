@@ -5,7 +5,7 @@
 [Satisfactory](https://www.satisfactorygame.com/)
 Production Calculator Is A Library That Does All Of The Hard Work To Calculate A Entire Production Line.
 <br/>
-Data Version : Update 5
+Data Version : Update 6
 
 [Chage Log](ChangeLog.md)
 

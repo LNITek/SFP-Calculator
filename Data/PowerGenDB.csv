@@ -1,0 +1,9 @@
+ID,Name,Factory,Input,Output
+1,Coal,15,5|15,
+2,Compacted Coal,15,30|7.143,
+3,Petroleum Coke,15,21|25,
+4,Turbofuel,16,39|4.5,
+5,Fuel,16,37|12,
+6,Liquid Biofuel,16,38|12,
+7,Uranium,18,78|0.2,83|10
+8,Plutonium,18,79|0.1,84|1

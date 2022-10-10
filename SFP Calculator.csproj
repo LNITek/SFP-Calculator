@@ -1,0 +1,55 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>SFPCalculator</RootNamespace>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title>Satisfactory Production Calculator</Title>
+    <Company>LNI.Tek</Company>
+    <Version>1.0.0</Version>
+    <AssemblyVersion>$(PackageVersion)</AssemblyVersion>
+    <FileVersion>$(PackageVersion)</FileVersion>
+    <Authors>Tekknow</Authors>
+    <Description>A Library To Calculate Satisfactory Production</Description>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>Staticfactory;Production;Calcularor;Planner</PackageTags>
+    <IncludeSymbols>False</IncludeSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Data\AltRecipesDB.csv" />
+    <None Remove="Data\BuildingsDB.csv" />
+    <None Remove="Data\ItemsDB.csv" />
+    <None Remove="Data\PowerGenDB.csv" />
+    <None Remove="Data\RecipesDB.csv" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Data\AltRecipesDB.csv" />
+    <EmbeddedResource Include="Data\BuildingsDB.csv" />
+    <EmbeddedResource Include="Data\ItemsDB.csv" />
+    <EmbeddedResource Include="Data\PowerGenDB.csv" />
+    <EmbeddedResource Include="Data\RecipesDB.csv" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CsvHelper" Version="29.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

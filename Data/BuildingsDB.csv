@@ -1,0 +1,21 @@
+ID,Name,Category,PowerUsed
+0,Import,Other,0
+1,Miner,Extraction,5
+2,Oil Extractor,Extraction,40
+3,Water Extractor,Extraction,20
+4,Resource Well,Extraction,150
+5,Smelter,Production,4
+6,Foundry,Production,16
+7,Constructor,Production,4
+8,Assembler,Production,15
+9,Manufacturer,Production,55
+10,Particle Accelerator,Production,1500
+11,Refinery,Production,30
+12,Blender,Production,75
+13,Packager,Production,10
+14,Biomass Burner,Generators,30
+15,Coal Generator,Generators,75
+16,Fuel Generator,Generators,150
+17,Geothermal Generator,Generators,100
+18,Nuclear Power Plant,Generators,2500
+19,Power Storage,Generators,100

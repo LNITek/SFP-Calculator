@@ -1,0 +1,110 @@
+ID,Name,Category
+0,Power MW,Other
+1,Iron Ore,Ores
+2,Copper Ore,Ores
+3,Caterium Ore,Ores
+4,Limestone,Ores
+5,Coal,Ores
+6,Raw Quartz,Ores
+7,Sulfur,Ores
+8,Bauxite,Ores
+9,Uranium,Ores
+10,S.A.M. Ore,Ores
+11,Iron Ingot,Ingots
+12,Copper Ingot,Ingots
+13,Caterium Ingot,Ingots
+14,Steel Ingot,Ingots
+15,Aluminum Ingot,Ingots
+16,Concrete,Material
+17,Quartz Crystal,Material
+18,Silica,Material
+19,Copper Powder,Material
+20,Polymer Resin,Material
+21,Petroleum Coke,Material
+22,Aluminum Scrap,Material
+23,Fabric,Material
+24,Mycelia,Material
+25,Flower Petals,Material
+26,Leaves,Material
+27,Wood,Material
+28,Biomass,Material
+29,Solid Biofuel,Material
+30,Compacted Coal,Material
+31,Plastic,Material
+32,Rubber,Material
+33,Black Powder,Material
+34,Water,Liquids
+35,Crude Oil,Liquids
+36,Heavy Oil Residue,Liquids
+37,Fuel,Liquids
+38,Liquid Biofuel,Liquids
+39,Turbofuel,Liquids
+40,Alumina Solution,Liquids
+41,Sulfuric Acid,Liquids
+42,Nitric Acid,Liquids
+43,Nitrogen Gas,Gas
+44,Iron Rod,StdParts
+45,Screw,StdParts
+46,Iron Plate,StdParts
+47,Reinforced Iron Plate,StdParts
+48,Copper Sheet,StdParts
+49,Wire,StdParts
+50,Cable,StdParts
+51,Quickwire,StdParts
+52,Steel Pipe,StdParts
+53,Steel Beam,StdParts
+54,Encased Industrial Beam,StdParts
+55,Modular Frame,StdParts
+56,Computer,StdParts
+57,Crystal Oscillator,StdParts
+58,Alclad Aluminum Sheet,StdParts
+59,Aluminum Casing,StdParts
+60,Circuit Board,StdParts
+61,AI Limiter,StdParts
+62,Rotor,IndParts
+63,Stator,IndParts
+64,Motor,IndParts
+65,Heavy Modular Frame,IndParts
+66,High-Speed Connector,IndParts
+67,Supercomputer,IndParts
+68,Radio Control Unit,IndParts
+69,Heat Sink,IndParts
+70,Battery,IndParts
+71,Turbo Motor,AdvParts
+72,Fused Modular Frame,AdvParts
+73,Quantum Computer,AdvParts
+74,Cooling System,AdvParts
+75,Superposition Oscillator,AdvParts
+76,Electromagnetic Control Rod,Nuclear
+77,Encased Uranium Cell,Nuclear
+78,Uranium Fuel Rod,Nuclear
+79,Plutonium Fuel Rod,Nuclear
+80,Non-fissile Uranium,Nuclear
+81,Plutonium Pellet,Nuclear
+82,Encased Plutonium Cell,Nuclear
+83,Uranium Waste,Nuclear
+84,Plutonium Waste,Nuclear
+85,Beacon,Consumed
+86,Color Cartridge,Consumed
+87,Gas Filter,Consumed
+88,Iodine Infused Filter,Consumed
+89,Spiked Rebar,Consumed
+90,Rifle Cartridege,Consumed
+91,Nobelisk,Consumed
+92,Smart Plating,Special
+93,Versatile Framework,Special
+94,Automated Wiring,Special
+95,Modular Engine,Special
+96,Adaptive Control Unit,Special
+97,Assembly Director System,Special
+98,Magnetic Field Generator,Special
+99,Thermal Propulsion Rocket,Special
+100,Pressure Conversion Cube,Special
+101,Nuclear Pasta,Special
+102,Empty Fluid Tank,Other
+103,Empty Canister,Other
+104,Alien Carapace,Material
+105,Alien Organs,Material
+106,Packaged Nitrogen Gas,Container
+107,Packaged Fuel,Container
+108,Packaged Water,Container

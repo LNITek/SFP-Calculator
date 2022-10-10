@@ -1,0 +1,102 @@
+ID,Name,Factory,Input,Output
+1,Uranium Waste,0,,83|1
+2,Mycelia,0,,24|1
+3,Biomass,0,,28|1
+4,Iron Ore,1,,1|30
+5,Copper Ore,1,,2|30
+6,Caterium Ore,1,,3|30
+7,Limestone,1,,4|30
+8,Coal,1,,5|30
+9,Raw Quartz,1,,6|30
+10,Sulfur,1,,7|30
+11,Bauxite,1,,8|30
+12,Uranium,1,,9|30
+13,Crude Oil,2,,35|60
+14,Water,3,,34|120
+15,Water,4,,34|30
+16,Nitrogen Gas,4,,43|30
+17,Crude Oil,4,,35|30
+18,Iron Ingot,5,1|30,11|30
+19,Copper Ingot,5,2|30,12|30
+20,Caterium Ingot,5,3|30,13|30
+21,Steel Ingot,6,1|45;5|45,14|45
+22,Aluminum Ingot,6,22|90;18|75,15|60
+23,Compacted Coal,6,5|25;7|25,30|25
+24,Solid Biofuel,7,28|120,29|60
+25,Color Cartridge,7,25|37.5,86|75
+26,Spiked Rebar,7,44|15,89|15
+27,Iron Plate,7,11|30,46|20
+28,Iron Rod,7,11|15,44|15
+29,Screw,7,44|10,45|40
+30,Quickwire,7,13|12,51|60
+31,Wire,7,12|15,49|30
+32,Cable,7,49|60,50|30
+33,Copper Sheet,7,12|20,48|10
+34,Copper Powder,7,12|300,19|50
+35,Concrete,7,4|45,16|15
+36,Steel Beam,7,14|60,53|15
+37,Steel Pipe,7,14|30,52|20
+38,Quartz Crystal,7,6|37.5,17|22.5
+39,Silica,7,6|22.5,18|37.5
+40,Aluminum Casing,7,15|90,59|60
+41,Empty Fluid Tank,7,15|60,102|60
+42,Emprty Canister,7,31|30,103|60
+43,Black Powder,8,5|7.5;7|15,33|7.5
+44,Nobelisk,8,33|15;52|30,91|3
+45,Fabric,8,24|15;28|75,23|15
+46,Reinforced Iron Plate,8,46|30;45|60,47|5
+47,Rotor,8,44|20;45|100,62|4
+48,Stator,8,52|15;49|40,63|2.5
+49,Motor,8,62|10;63|10,64|5
+50,Modualr Frame,8,47|3;44|12,55|2
+51,Encased Indusrial Beam,8,53|24;16|30,54|6
+52,Alclad Aluminum Sheet,8,15|30;12|10,58|30
+53,Heat Sink,8,58|37.5;48|22.5,69|7.5
+54,Circuit Board,8,48|15;31|30,60|7.5
+55,AI Limiter,8,48|25;51|100,61|5
+56,Smart Plating,8,47|2;62|2,92|2
+57,Automated Wiring,8,63|2.5;50|50,94|2.5
+58,Versatilte Framework,8,55|2.5;53|30,93|5
+59,Assembly Director,8,96|1.5;67|0.75,97|0.75
+60,Pressure Conversion Cube,8,72|1;68|2,100|1
+61,Electromagnetic Controle Rod,8,63|6;61|4,76|4
+62,Encased Plutonium Cell,8,81|10;16|20,82|5
+63,Heavy Modular Frame,9,55|10;52|30;54|10;45|200,65|2
+64,Computer,9,60|25;50|22.5;31|45;45|130,56|2.5
+65,Supercomputer,9,56|3.75;61|375;66|5.625;31|52.5,67|1.875
+66,Crystal Oscillator,9,17|18;50|14;47|2.5,57|1
+67,Radio Control Unit,9,59|40;57|1.25;56|1.25,68|2.5
+68,Turbo Motor,9,74|7.5;68|3.75;64|7.5;32|45,71|1.875
+69,High-Speed Connector,9,51|210;50|37.5;60|3.75,66|3.75
+70,Modular Engine,9,64|2;32|15;92|2,95|1
+71,Adaptive Control Init,9,94|7.5;60|5;65|1;56|1,96|1
+72,Magnetic Field Generator,9,93|2.5;76|1;70|5,98|1
+73,Thermal Propulsion Rocket,9,95|2.5;71|1;74|3;72|1,99|1
+74,Plutonium Fuel Rod,9,82|7.5;53|4.5;76|1.5;69|2.5,79|0.25
+75,Uranium Fuel Rod,9,77|20;54|1.2;76|2,78|0.4
+76,Beacon,9,46|22.5;44|7.5;49|112.5;50|15,85|7.5
+77,Gas Filter,9,5|37.5;32|15;23|15,87|7.5
+78,Iodine Infused Filter,9,87|3.75;51|30;59|3.75,88|3.75
+79,Rifle Cartridge,9,85|3;52|30;33|30;32|30,90|15
+80,Plutonium Pellet,10,80|100;83|25,81|30
+81,Nuclear Pasts,10,19|100;100|0.5,101|0.5
+82,Turbofuel,11,37|22.5;30|15,39|18.75
+83,Fuel,11,35|60,37|40;20|30
+84,Petroleum Coke,11,36|40,21|120
+85,Plastic,11,35|29,31|20;36|10
+86,Rubber,11,35|30,32|20;36|20
+87,Liquid Biofuel,11,29|90;34|45,38|60
+88,Alumina Solution,11,8|120;34|180,40|120;18|50
+89,Aluminum Scrap,11,40|240;5|120,22|360;34|120
+90,Sulfuric Acid,11,7|50;34|50,41|50
+91,Heavy Oil Residue,11,35|30,36|40;20|20
+92,Polymer Resin,11,35|60,20|130;36|20
+93,Battery,12,41|60;40|40;59|20,70|20;34|40
+94,Fused Modular Frame,12,65|1.5;59|75;43|37.5,72|1.5
+95,Cooling System,12,69|12;32|12;34|30;43|150,74|6
+96,Nitric Acid,12,43|120;34|30;46|10,42|30
+97,Encased Uranium Cell,12,9|50;19|15;41|40,77|25;41|10
+98,Non-fissil Uranium,12,83|37.5;18|25;42|15;41|15,80|50;34|15
+99,Packaged Nitrogen Gas,13,43|240;102|60,106|60
+100,Packaged Fuel,13,37|40;103|40,107|40
+101,Packaged Water,13,34|60;103|60,108|60

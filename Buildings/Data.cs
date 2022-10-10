@@ -1,16 +1,22 @@
-﻿using SFPCalculator.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 
 namespace SFPCalculator.Buildings
 {
+    /// <summary>
+    /// DB API
+    /// </summary>
     public static class Data
     {
-        public static List<Buildings> GetBuildings() => GetAllData();
+        /// <summary>
+        /// List Of Builings
+        /// </summary>
+        /// <returns></returns>
+        public static IEnumerable<Buildings> GetBuildings() => GetAllData();
 
-        static List<Buildings> GetAllData()
+        static IEnumerable<Buildings> GetAllData()
         {
             int I = 0;
             while (!ModsManager.ModsLoaded)
@@ -25,13 +31,35 @@ namespace SFPCalculator.Buildings
             return Buildings;
         }
 
-        public static List<Buildings> GetBuildings<T>(Property Key, T Value) => 
-            GetAllData().FindAll(el => el.Select(Key).ToLower() == Value.ToString().ToLower()).ToList();
+        /// <summary>
+        /// Get Buildings By Property
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="Key">Property</param>
+        /// <param name="Value">Property Value</param>
+        /// <returns>List Of Buildings</returns>
+        public static IEnumerable<Buildings> GetBuildings<T>(Property Key, T Value) =>
+            GetAllData().ToList().FindAll(el => el.Select(Key).ToString().ToLower() == Value.ToString().ToLower());
 
-        public static List<Buildings> GetBuildings<T>(string Key, T Value) => 
-            GetAllData().FindAll(el => el.Select(Key).ToLower() == Value.ToString().ToLower()).ToList();
+        /// <summary>
+        /// Get Buildings By Property
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="Key">Property</param>
+        /// <param name="Value">Property Value</param>
+        /// <returns>List Of Buildings</returns>
+        public static IEnumerable<Buildings> GetBuildings<T>(string Key, T Value) =>
+            GetAllData().ToList().FindAll(el => el.Select(Key).ToString().ToLower() == Value.ToString().ToLower());
 
-        public static List<Buildings> GetBuildings<T>(Property Key, List<T> Values) =>
-            GetAllData().FindAll(el => Values.Select(x => x.ToString().ToLower()).Contains(el.Select(Key).ToLower())).ToList();
+        /// <summary>
+        /// Get Buildings By Property
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="Key">Property</param>
+        /// <param name="Values">List Of Property Values</param>
+        /// <returns>List Of Buildings</returns>
+        public static IEnumerable<Buildings> GetBuildings<T>(Property Key, IEnumerable<T> Values) =>
+            GetAllData().ToList().FindAll(el => Values.Select(x => x.ToString().ToLower())
+            .Contains(el.Select(Key).ToString().ToLower()));
     }
 }

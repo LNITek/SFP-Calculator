@@ -1,14 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace SFPCalculator
 {
+    /// <summary>
+    /// The Script API To Save Your Production Plan
+    /// </summary>
     public class SFPScripts
     {
+        /// <summary>
+        /// Converts A Process To A string[] Of The Production
+        /// </summary>
+        /// <param name="Plan">The Production Plan</param>
+        /// <returns>string[] Of The Production</returns>
         public static Task<string[]> ProcessToRPScript(Process Plan)
         {
             List<string> RPScrip = new List<string>();
@@ -17,7 +23,7 @@ namespace SFPCalculator
             void GetRP(Process Item)
             {
                 RPScrip.Add(Item.Recipe.ToString() + "," + Item.Outputs.Select(x => x.PerMin).First());
-                if (Item.Children.Count <= 0) return;
+                if (Item.Children.ToList().Count <= 0) return;
                 RPScrip.Add("[");
                 foreach (var item in Item.Children)
                     GetRP(item);
@@ -27,6 +33,12 @@ namespace SFPCalculator
             return Task.FromResult(RPScrip.ToArray());
         }
 
+        /// <summary>
+        /// Converts A string[] Of The Production To A Process
+        /// Warning! This Method Is Can Fail If The One Of The Strings Is Not In The Correct Format Or If The Mod Does Not Exist
+        /// </summary>
+        /// <param name="RPScript">string[] Of The Production</param>
+        /// <returns>The Production Plan</returns>
         public static Task<Process> RPScriptToProcess(string[] RPScript)
         {
             int Index = -1;
@@ -42,7 +54,7 @@ namespace SFPCalculator
                     Index++;
                     if (RPScript[Index] == "[" && I >= 0)
                     {
-                        Converter().ForEach(x => Children[I].Children.Add(x));
+                        Converter().ForEach(x => Children[I].Children.ToList().Add(x));
                         continue;
                     }
                     if (RPScript[Index] == "]")
@@ -56,6 +68,11 @@ namespace SFPCalculator
 
         }
 
+        /// <summary>
+        /// Converts A Process To A Smaller Process Object
+        /// </summary>
+        /// <param name="Process">The Production Plan</param>
+        /// <returns>Smaller Process Object</returns>
         public static Task<MacroProcess> ProcessToMicroProcess(Process Process)
         {
             return Task.FromResult(Converter(Process));
@@ -75,6 +92,11 @@ namespace SFPCalculator
             }
         }
 
+        /// <summary>
+        /// Converts The Smaller Process Object To A Full Process
+        /// </summary>
+        /// <param name="Macro">Smaller Process Object</param>
+        /// <returns>The Production Plan</returns>
         public static Task<Process> MicroProcessToProcess(MacroProcess Macro)
         {
             return Task.FromResult(Converter(Macro));

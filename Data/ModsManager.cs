@@ -4,9 +4,9 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 
-namespace SFPCalculator.Data
+namespace SFPCalculator
 {
-    public class ModsManager
+    internal class ModsManager
     {
         #if (DEBUG)
             static readonly bool bRelease = false;

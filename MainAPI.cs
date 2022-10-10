@@ -6,15 +6,31 @@ using System.Threading.Tasks;
 
 namespace SFPCalculator
 {
+    /// <summary>
+    /// The Main API To Automated Production Planner
+    /// </summary>
     public class SFPPlanner
     {
+        /// <summary>
+        /// The Version Of The Library
+        /// </summary>
         public static string MK { get; } = Assembly.GetExecutingAssembly().GetName().Version?.ToString() ?? "0.0.0";
 
+        /// <summary>
+        /// The Main API To Automated Production Planner
+        /// </summary>
         public SFPPlanner()
         {
-            Data.ModsManager.LoadMods();
+            ModsManager.LoadMods();
         }
 
+        /// <summary>
+        /// Produces A Single Process With No Child Production
+        /// </summary>
+        /// <param name="RecipeName">The Recipes Name</param>
+        /// <param name="UnitPerMin">The Amount Per Min (Leave Blank To Use The Default Value)</param>
+        /// <returns>One Process With No Children</returns>
+        /// <exception cref="Exception"></exception>
         public static Process SingleProcess(string RecipeName, double UnitPerMin = default)
         {
             Recipes.Recipes Alt = null;
@@ -88,7 +104,14 @@ namespace SFPCalculator
             }
         }
 
-        public Task<Process> Produce(string Name, double UnitPerMin = default)
+        /// <summary>
+        /// Produces A Full Process With Of The Production
+        /// </summary>
+        /// <param name="RecipeName">The Recipes Name</param>
+        /// <param name="UnitPerMin">The Amount Per Min (Leave Blank To Use The Default Value)</param>
+        /// <returns>The Full Process To Produce The Production</returns>
+        /// <exception cref="Exception"></exception>
+        public Task<Process> Produce(string RecipeName, double UnitPerMin = default)
         {
             if (UnitPerMin < 0)
                 UnitPerMin = default;
@@ -98,31 +121,31 @@ namespace SFPCalculator
             double PerMin = 1;
             bool bDefult = true;
 
-            if (Name.ToUpper().Contains("ALT"))
+            if (RecipeName.ToUpper().Contains("ALT"))
             {
-                Name = Name.ToUpper().Replace("ALTERNATE", "").Replace("ALT", "").Replace(":", "").Trim();
-                Alt = GetAltRecipe(Name);
+                RecipeName = RecipeName.ToUpper().Replace("ALTERNATE", "").Replace("ALT", "").Replace(":", "").Trim();
+                Alt = GetAltRecipe(RecipeName);
                 Item = Items.Data.GetItems(Items.Property.ID, Alt.GetOutput().First().Key).FirstOrDefault(x => x != null);
                 if (Item == null)
-                    throw new Exception($"No Item With The Alt Recipe Name ({Name}) Exist. Ex-01");
+                    throw new Exception($"No Item With The Alt Recipe Name ({RecipeName}) Exist. Ex-01");
                 PerMin = UnitPerMin == default ? Alt.GetOutput().First(x => x.Key == Item.ID).Value : UnitPerMin;
                 bDefult = false;
             }
-            if (Name.ToUpper().Contains("POWER"))
+            if (RecipeName.ToUpper().Contains("POWER"))
             {
-                Name = Name.ToUpper().Replace("POWER", "").Replace(":", "").Trim();
-                Alt = GetGenRecipe(Name);
+                RecipeName = RecipeName.ToUpper().Replace("POWER", "").Replace(":", "").Trim();
+                Alt = GetGenRecipe(RecipeName);
                 Item = Items.Data.GetItems(Items.Property.ID, 0).FirstOrDefault(x => x != null);
                 if (Item == null)
-                    throw new Exception($"No Item With The Power Gen Recipe Name ({Name}) Exist. Ex-01");
+                    throw new Exception($"No Item With The Power Gen Recipe Name ({RecipeName}) Exist. Ex-01");
                 if (Alt == null)
-                    throw new Exception($"No Power Gen Recipe With The Name ({Name}) Exist. Ex-01");
+                    throw new Exception($"No Power Gen Recipe With The Name ({RecipeName}) Exist. Ex-01");
                 PerMin = UnitPerMin == default ? GetBuilding(Alt).PowerUsed : UnitPerMin;
                 bDefult = false;
             }
             if (bDefult)
             {
-                Item = GetItem(Name);
+                Item = GetItem(RecipeName);
                 PerMin = UnitPerMin == default ? GetRecipe(Item).GetOutput().First(x => x.Key == Item.ID).Value : UnitPerMin;
             }
 

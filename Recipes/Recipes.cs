@@ -5,13 +5,28 @@ using System.Linq;
 
 namespace SFPCalculator.Recipes
 {
+    /// <summary>
+    /// Recipes The Main Point Of This Library
+    /// </summary>
     public class Recipes
     {
+        /// <summary>
+        /// DB ID
+        /// </summary>
         public int ID { get; set; }
+        /// <summary>
+        /// Name
+        /// </summary>
         public string Name { get; set; }
+        /// <summary>
+        /// Building That Uses This Recipe
+        /// </summary>
         public int Factory { get; set; }
         Dictionary<int, double> In = new Dictionary<int, double>();
         Dictionary<int, double> Out = new Dictionary<int, double>();
+        /// <summary>
+        /// Input As String Format
+        /// </summary>
         public string Input
         {
             get
@@ -37,6 +52,9 @@ namespace SFPCalculator.Recipes
                 }
             }
         }
+        /// <summary>
+        /// Output As String Format
+        /// </summary>
         public string Output
         {
             get
@@ -59,11 +77,20 @@ namespace SFPCalculator.Recipes
                 }
             }
         }
+        /// <summary>
+        /// Is Power Gen Recipe
+        /// </summary>
         [Ignore]
         public bool PowerGen { get; set; } = false;
+        /// <summary>
+        /// Is Alt Recipe
+        /// </summary>
         [Ignore]
         public bool Alt { get; set; } = false;
 
+        /// <summary>
+        /// Recipes The Main Point Of This Library
+        /// </summary>
         public Recipes(int ID, string Name, int Factory, string Input, string Output)
         {
             this.ID = ID;
@@ -73,6 +100,9 @@ namespace SFPCalculator.Recipes
             this.Output = Output;
         }
 
+        /// <summary>
+        /// Recipes The Main Point Of This Library
+        /// </summary>
         public Recipes(int ID, string Name, int Factory, Dictionary<int, double> Input, Dictionary<int, double> Output)
         {
             this.ID = ID;
@@ -82,23 +112,59 @@ namespace SFPCalculator.Recipes
             this.SetOutput(Output);
         }
 
+        /// <summary>
+        /// The Inputs
+        /// Key = Item ID, Value = Units Per Min
+        /// </summary>
+        /// <returns></returns>
         public Dictionary<int, double> GetInput() => In;
+        /// <summary>
+        /// The Outputs
+        /// Key = Item ID, Value = Units Per Min
+        /// </summary>
+        /// <returns></returns>
         public Dictionary<int, double> GetOutput() => Out;
+        /// <summary>
+        /// The Primery Output
+        /// Key = Item ID, Value = Units Per Min
+        /// </summary>
+        /// <returns></returns>
         public KeyValuePair<int, double> GetPrimery() => Out.First();
+        /// <summary>
+        /// Set Input
+        /// </summary>
+        /// <param name="Value">Key = Item ID, Value = Units Per Min</param>
         public void SetInput(Dictionary<int, double> Value) => In = Value;
+        /// <summary>
+        /// Set Output
+        /// </summary>
+        /// <param name="Value">Key = Item ID, Value = Units Per Min</param>
         public void SetOutput(Dictionary<int, double> Value) => Out = Value;
 
-        public string Select(string Property) => Select(Prop.ToProperty(Property));
-        public string Select(Property Prop)
+        /// <summary>
+        /// Returns Property Value By Name
+        /// </summary>
+        /// <param name="Property">Property Name</param>
+        public object Select(string Property) => Select(Prop.ToProperty(Property));
+        /// <summary>
+        /// Returns Property Value By enum
+        /// </summary>
+        /// <param name="Property">Property enum</param>
+        /// <returns></returns>
+        public object Select(Property Property)
         {
-            switch (Prop)
+            switch (Property)
             {
-                case Property.ID: return ID.ToString();
-                case Property.Name: return Name.ToString();
+                case Property.ID: return ID;
+                case Property.Name: return Name;
                 default: return null;
             }
         }
 
+        /// <summary>
+        /// Returns The Full Recipe Name
+        /// </summary>
+        /// <returns></returns>
         public override string ToString() =>
             (PowerGen ? "Power : " : Alt ? "Alt : " : "") + Name;
     }

@@ -1,19 +1,25 @@
-﻿using SFPCalculator.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 
 namespace SFPCalculator.Recipes
 {
+    /// <summary>
+    /// DB API
+    /// </summary>
     public static class Data
     {
         static readonly string Path = Properties.Resources.DBRecipes;
         static readonly string AltPath = Properties.Resources.DBAltRecipes;
         static readonly string GenPath = Properties.Resources.DBPowerGen;
-        public static List<Recipes> GetRecipes() => GetAllData();
+        /// <summary>
+        /// List Af All The Recipes
+        /// </summary>
+        /// <returns></returns>
+        public static IEnumerable<Recipes> GetRecipes() => GetAllData();
         
-        static List<Recipes> GetAllData()
+        static IEnumerable<Recipes> GetAllData()
         {
             int I = 0;
             while (!ModsManager.ModsLoaded)
@@ -47,16 +53,47 @@ namespace SFPCalculator.Recipes
             return RS;
         }
 
-        public static List<Recipes> GetRecipes<T>(Property Key, T Value) =>
-            GetAllData().FindAll(el => el.Select(Key).ToLower() == Value.ToString().ToLower()).ToList();
+        /// <summary>
+        /// Get Item By Property
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="Key">Property</param>
+        /// <param name="Value">Property Value</param>
+        /// <returns>List Of Buildings</returns>
+        public static IEnumerable<Recipes> GetRecipes<T>(Property Key, T Value) =>
+            GetAllData().ToList().FindAll(el => el.Select(Key).ToString().ToLower() == Value.ToString().ToLower());
 
-        public static List<Recipes> GetRecipes<T>(string Key, T Value) =>
-            GetAllData().FindAll(el => el.Select(Key).ToLower() == Value.ToString().ToLower()).ToList();
+        /// <summary>
+        /// Get Item By Property
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="Key">Property</param>
+        /// <param name="Value">Property Value</param>
+        /// <returns>List Of Buildings</returns>
+        public static IEnumerable<Recipes> GetRecipes<T>(string Key, T Value) =>
+            GetAllData().ToList().FindAll(el => el.Select(Key).ToString().ToLower() == Value.ToString().ToLower());
 
-        public static List<Recipes> GetRecipes<T>(Property Key, List<T> Values) =>
-            GetAllData().FindAll(el => Values.Select(x => x.ToString().ToLower()).Contains(el.Select(Key).ToLower())).ToList();
+        /// <summary>
+        /// Get Item By Property
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="Key">Property</param>
+        /// <param name="Values">List Of Property Values</param>
+        /// <returns>List Of Buildings</returns>
+        public static IEnumerable<Recipes> GetRecipes<T>(Property Key, List<T> Values) =>
+            GetAllData().ToList().FindAll(el => Values.Select(x => x.ToString().ToLower())
+            .Contains(el.Select(Key).ToString().ToLower()));
 
-        public static List<Recipes> GetOutput(int ItemID) =>
-            GetAllData().FindAll(x => { if (x.GetOutput().Count <= 0) return false; return x.GetOutput().Keys.First() == ItemID; });
+        /// <summary>
+        /// Gets The Recipe With A Primery Output Of The Item
+        /// </summary>
+        /// <param name="ItemID">The Item ID</param>
+        /// <returns></returns>
+        public static IEnumerable<Recipes> GetOutput(int ItemID) =>
+            GetAllData().ToList().FindAll(x =>
+            {
+                if (x.GetOutput().Count <= 0) return false; 
+                return x.GetOutput().Keys.First() == ItemID;
+            });
     }
 }

@@ -1,29 +1,45 @@
-﻿using SFPCalculator.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SFPCalculator
+﻿namespace SFPCalculator
 {
+    /// <summary>
+    /// The API To Handel All Of Your Moding Needs
+    /// </summary>
     public class SFPMods
     {
+        /// <summary>
+        /// Add A Mod
+        /// </summary>
+        /// <param name="FilePath">The Path To The Mod File</param>
         public static void AddMods(string FilePath)=>
             ModsManager.ImportMod(FilePath);
 
-        public static void AddMods(string[] FilePath) =>
-            ModsManager.ImportMod(FilePath);
+        /// <summary>
+        /// Add Multabel Mods
+        /// </summary>
+        /// <param name="FilePaths">A List Of The Paths To The Mod Files</param>
+        public static void AddMods(string[] FilePaths) =>
+            ModsManager.ImportMod(FilePaths);
 
-        public static void DeleteMods(string FilePath) =>
-            ModsManager.RemoveMod(FilePath);
+        /// <summary>
+        /// Remove A Mod
+        /// </summary>
+        /// <param name="ModName">The Name Of The Mod</param>
+        public static void DeleteMods(string ModName) =>
+            ModsManager.RemoveMod(ModName);
 
-        public static void DeleteMods(string[] FilePath)
+        /// <summary>
+        /// Remove Multable Mods
+        /// </summary>
+        /// <param name="ModNames">List Of The Mod Names</param>
+        public static void DeleteMods(string[] ModNames)
         {
-            foreach (var FP in FilePath)
+            foreach (var FP in ModNames)
                 ModsManager.RemoveMod(FP);
         }
 
+        /// <summary>
+        /// Returns List Of Names For All Active Mods
+        /// </summary>
+        /// <returns></returns>
         public static string[] ListMods() =>
             ModsManager.ModList.ToArray();
     }

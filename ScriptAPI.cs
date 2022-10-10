@@ -8,7 +8,7 @@ namespace SFPCalculator
     /// <summary>
     /// The Script API To Save Your Production Plan
     /// </summary>
-    public class SFPScripts
+    public static class SFPScripts
     {
         /// <summary>
         /// Converts A Process To A string[] Of The Production
@@ -95,11 +95,11 @@ namespace SFPCalculator
         /// <summary>
         /// Converts The Smaller Process Object To A Full Process
         /// </summary>
-        /// <param name="Macro">Smaller Process Object</param>
+        /// <param name="Micro">Smaller Process Object</param>
         /// <returns>The Production Plan</returns>
-        public static Task<Process> MicroProcessToProcess(MacroProcess Macro)
+        public static Task<Process> MicroProcessToProcess(MacroProcess Micro)
         {
-            return Task.FromResult(Converter(Macro));
+            return Task.FromResult(Converter(Micro));
 
             Process Converter(MacroProcess MicroPlan)
             {

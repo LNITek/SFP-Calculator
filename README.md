@@ -3,6 +3,8 @@
 [![NuGet](https://img.shields.io/nuget/v/ExtraFunctions.svg)](https://www.nuget.org/packages/SFPCalculator/)
 
 Satisfactory Production Calculator Is A Library That Does All Of The Hard Work To Calculate A Entire Production Line.
+<br/>
+Data Version : Update 5
 
 [Chage Log](ChangeLog.md)
 

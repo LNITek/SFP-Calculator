@@ -20,7 +20,7 @@ namespace SFPCalculator
         /// <summary>
         /// The Primery Output Item
         /// </summary>
-        public Items.ItemPair Product { get { return Outputs.First(); } }
+        public Items.ItemPair Product { get { if (Outputs.Count() == 0) return null; return Outputs.FirstOrDefault(); } }
         /// <summary>
         /// The Used Resipe
         /// </summary>
@@ -76,27 +76,6 @@ namespace SFPCalculator
             this.MainID = MainID;
             this.Inputs = Inputs;
             this.Outputs = Outputs;
-            this.Building = Building;
-            this.Children = Children ?? new List<Process>();
-        }
-
-        /// <summary>
-        /// A Precess Has All The Data You Need
-        /// </summary>
-        public Process(int MainID, IEnumerable<Items.Items> InputItems, IEnumerable<double> InputPerMin,
-            IEnumerable<Items.Items> OutputItems, IEnumerable<double> OutputPerMin, Buildings.Buildings Building,
-            IEnumerable<Process> Children)
-        {
-            if (InputItems.ToList().Count != InputPerMin.ToList().Count)
-                throw new Exception("Input Lists Must Be Of The Same Size.");
-            if (OutputItems.ToList().Count != OutputPerMin.ToList().Count)
-                throw new Exception("Output Lists Must Be Of The Same Size.");
-
-            for (int I = 0; I < InputItems.ToList().Count; I++)
-                AddInput(InputItems.ToList()[I], InputPerMin.ToList()[I]);
-            for (int I = 0; I < OutputItems.ToList().Count; I++)
-                AddOuput(OutputItems.ToList()[I], OutputPerMin.ToList()[I]);
-            this.MainID = MainID;;
             this.Building = Building;
             this.Children = Children ?? new List<Process>();
         }

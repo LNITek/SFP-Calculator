@@ -129,7 +129,11 @@ namespace SFPCalculator.Recipes
         /// Key = Item ID, Value = Units Per Min
         /// </summary>
         /// <returns></returns>
-        public KeyValuePair<int, double> GetPrimery() => Out.First();
+        public KeyValuePair<int, double> GetPrimery()
+        {
+            if (PowerGen) return new KeyValuePair<int, double>(0, Buildings.Data.GetBuildings().First(x => x.ID == Factory).PowerUsed);
+            else return Out.First();
+        }
         /// <summary>
         /// Set Input
         /// </summary>

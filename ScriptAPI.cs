@@ -109,8 +109,12 @@ namespace SFPCalculator
                 var Plan = SFPPlanner.SingleProcess(MicroPlan.Recipe, MicroPlan.PerMin);
                 Plan.Production = MicroPlan.Production;
                 Plan.Children = Children;
-                foreach (var Child in Plan.Children)
-                    Plan.Inputs.Where(x => x.Item.ID == Child.Product.Item.ID).First().Production = Child.Production;
+                try
+                {
+                    foreach (var Child in Plan.Children)
+                        Plan.Inputs.Where(x => x.Item.ID == Child.Product.Item.ID).First().Production = Child.Production;
+                }
+                catch { }
                 return Plan;
             }
         }

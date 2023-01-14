@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -62,45 +63,37 @@ namespace SFPCalculator
             }
             if (bDefult)
             {
-                Item = GetItem(RecipeName);
+                RecipeName = RecipeName.ToUpper().Trim();
+                Item = GetRecipe(RecipeName);
                 PerMin = UnitPerMin == default ? GetRecipe(Item).GetOutput().First(x => x.Key == Item.ID).Value : UnitPerMin;
             }
             return GenProcess();
 
             Process GenProcess()
             {
-                var InPerMin = new List<double>();
-                var OutPerMin = new List<double>();
-                var Inputs = new List<Items.Items>();
-                var Outputs = new List<Items.Items>();
-                var RP = Alt == null ? GetRecipe(Item) : Alt;
+                var Inputs = new List<Items.ItemPair>();
+                var Outputs = new List<Items.ItemPair>();
+                var RP = Alt ?? GetRecipe(Item);
                 var Mulit = PerMin / (Item.ID == 0 ? GetBuilding(RP).PowerUsed : RP.GetOutput().First(x => x.Key == Item.ID).Value);
                 var Building = GetBuilding(RP);
 
                 var Dummy = RP.GetInput();
                 if (Dummy != null)
                     foreach (var item in Dummy)
-                    {
-                        Inputs.Add(Items.Data.GetItems(Items.Property.ID, item.Key.ToString()).First());
-                        InPerMin.Add(item.Value * Mulit);
-                    }
+                        Inputs.Add(new Items.ItemPair(Items.Data.GetItems(Items.Property.ID, item.Key.ToString()).First(), 
+                            item.Value * Mulit));
                 if (Inputs.Contains(null)) throw new Exception($"Inputs[{Inputs.IndexOf(null)}] = NULL Ex-02");
 
                 Dummy = RP.GetOutput();
                 if (Dummy != null)
                     foreach (var item in Dummy)
-                    {
-                        Outputs.Add(Items.Data.GetItems(Items.Property.ID, item.Key.ToString()).First());
-                        OutPerMin.Add(item.Value * Mulit);
-                    }
+                        Outputs.Add(new Items.ItemPair(Items.Data.GetItems(Items.Property.ID, item.Key.ToString()).First(), 
+                            item.Value * Mulit));
                 if (Outputs.Contains(null)) throw new Exception($"Outputs[{Outputs.IndexOf(null)}] = NULL Ex-02");
                 if (Outputs.Count <= 0 && RP.PowerGen)
-                {
-                    Outputs.Add(Item);
-                    OutPerMin.Add(PerMin);
-                }
+                    Outputs.Add(new Items.ItemPair(Item, PerMin));
 
-                return new Process(Item.ID, Inputs, InPerMin, Outputs, OutPerMin, Building, new List<Process>()) { Recipe = RP };
+                return new Process(Item.ID, Inputs, Outputs, Building, new List<Process>()) { Recipe = RP };
             }
         }
 
@@ -145,58 +138,75 @@ namespace SFPCalculator
             }
             if (bDefult)
             {
-                Item = GetItem(RecipeName);
+                RecipeName = RecipeName.ToUpper().Trim();
+                Item = GetRecipe(RecipeName);
                 PerMin = UnitPerMin == default ? GetRecipe(Item).GetOutput().First(x => x.Key == Item.ID).Value : UnitPerMin;
             }
 
             return Task.FromResult(Planer(Item, PerMin, Alt));
         }
 
+        /// <summary>
+        /// Updates The Main 'Head' Process Units Per Min
+        /// </summary>
+        /// <param name="Process">The Process To Update</param>
+        /// <param name="UnitPerMin">New Units Per Min</param>
+        /// <returns>Updated Process</returns>
+        public Task<Process> UpdatePerMin(Process Process, double UnitPerMin)
+        {
+            double Multiplier = UnitPerMin / Process.Recipe.GetPrimery().Value / 10;
+            Process NewProcess = SingleProcess(Process.Recipe.ToString(), UnitPerMin);
+            foreach(var Items in Process.Children)
+                NewProcess.Children = NewProcess.Children.Concat(new[] { Loop(Items, NewProcess.Inputs.First(x => x.Item.ID == Items.Product.Item.ID).PerMin) });
+            return Task.FromResult(NewProcess);
+            Process Loop(Process Pro, double PerMin)
+            {
+                Process NewPro = SingleProcess(Pro.Recipe.ToString(), PerMin);
+                foreach (var Items in Pro.Children)
+                    NewPro.Children = NewPro.Children.Concat(new[] { Loop(Items, NewPro.Inputs.First(x => x.Item.ID == Items.Product.Item.ID).PerMin) });
+                return NewPro;
+            }
+        }
+
         Process Planer(Items.Items Item, double PerMin, Recipes.Recipes Alt = null)
         {
             var Children = new List<Process>();
-            var InPerMin = new List<double>();
-            var OutPerMin = new List<double>();
-            var Inputs = new List<Items.Items>();
-            var Outputs = new List<Items.Items>();
-            var RP = Alt == null ? GetRecipe(Item) : Alt;
+            var Inputs = new List<Items.ItemPair>();
+            var Outputs = new List<Items.ItemPair>();
+            var RP = Alt ?? GetRecipe(Item);
             var Mulit = PerMin / (Item.ID == 0 ? GetBuilding(RP).PowerUsed : RP.GetOutput().First(x => x.Key == Item.ID).Value);
             var Building = GetBuilding(RP);
 
             var Dummy = RP.GetInput();
             if (Dummy != null)
                 foreach (var item in Dummy)
-                {
-                    Inputs.Add(Items.Data.GetItems(Items.Property.ID, item.Key.ToString()).First());
-                    InPerMin.Add(item.Value * Mulit);
-                }
+                    Inputs.Add(new Items.ItemPair(Items.Data.GetItems(Items.Property.ID, item.Key.ToString()).First(),
+                        item.Value * Mulit));
             if (Inputs.Contains(null)) throw new Exception($"Inputs[{Inputs.IndexOf(null)}] = NULL Ex-01");
 
             Dummy = RP.GetOutput();
             if (Dummy != null)
-                foreach (var item in Dummy)
-                {
-                    Outputs.Add(Items.Data.GetItems(Items.Property.ID, item.Key.ToString()).First());
-                    OutPerMin.Add(item.Value * Mulit);
-                }
+                foreach (var item in Dummy) 
+                    Outputs.Add(new Items.ItemPair(Items.Data.GetItems(Items.Property.ID, item.Key.ToString()).First(),
+                            item.Value * Mulit));
             if (Outputs.Contains(null)) throw new Exception($"Outputs[{Outputs.IndexOf(null)}] = NULL Ex-01");
             if (Outputs.Count <= 0 && RP.PowerGen)
-            {
-                Outputs.Add(Item);
-                OutPerMin.Add(PerMin);
-            }
+                Outputs.Add(new Items.ItemPair(Item, PerMin));
 
             foreach (var I in Inputs)
-                Children.Add(Planer(I, InPerMin[Inputs.IndexOf(I)]));
+                Children.Add(Planer(I.Item, I.PerMin));
 
-            return new Process(Item.ID, Inputs, InPerMin, Outputs, OutPerMin, Building, Children) { Recipe = RP };
+            return new Process(Item.ID, Inputs, Outputs, Building, Children) { Recipe = RP };
         }
 
-        internal static Items.Items GetItem (string Name)
+        internal static Items.Items GetRecipe(string RecipeName)
         {
-            var Product = Items.Data.GetItems(Items.Property.Name, Name).FirstOrDefault(x => x != null);
+            var RP = Recipes.Data.GetRecipes(Recipes.Property.Name, RecipeName).FirstOrDefault();
+            if (RP == null)
+                throw new Exception($"No Recipe With The Name ({RecipeName}) Exist.");
+            var Product = Items.Data.GetItems(Items.Property.ID, RP.GetOutput().FirstOrDefault().Key).FirstOrDefault();
             if (Product == null)
-                throw new Exception($"No Item With The Name ({Name}) Exist.");
+                throw new Exception($"No Item With The ID ({RP.GetOutput().FirstOrDefault().Key}) Exist.");
             return Product;
         }
 

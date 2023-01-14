@@ -5,9 +5,11 @@
 [Satisfactory](https://www.satisfactorygame.com/)
 Production Calculator Is A Library That Does All Of The Hard Work To Calculate A Entire Production Line.
 <br/>
-Data Version : Update 6
+Data Version : Update 7
 
-[Chage Log](ChangeLog.md)
+[SFP Planner : UI Version](https://github.com/Tekknow1580/SFP-Planner)
+
+[Change Log](ChangeLog.md)
 
 ## Installation
 ```
